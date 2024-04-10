@@ -13,34 +13,39 @@ Basic Operators
 5. Based on the variables you created, create a new variable 'description' which contains a string with this format: 'Portugal is in Europe, and its 11 million people speak portuguese'
 */
 
-let country = "Romania"
-let continent = "Europe"
-let population = 19892812
-let isIsland = false
-let language
-let description = (`${country} is in ${continent}, and its ${population} million people speak ${language = "Romanian"}.`)
+const country = "Romania";
+const continent = "Europe";
+let population = 19892812;
+const isIsland = false;
+let language;
+const description = `${country} is in ${continent}, and its ${population} million people speak ${language = "Romanian"}.`;
 
-console.log(`Country = ${country} | Continent = ${continent} | Population = ${population}`)
-console.log(`Island? = ${isIsland} | Population = ${population} | Country = ${country} | Language = ${language}`)
-console.log(`Population in each half will be : ${population / 2}`)
-console.log(`${++population}`)
+console.log(`Country = ${country} | Continent = ${continent} | Population = ${population}`);
+console.log(`Island? = ${isIsland} | Population = ${population} | Country = ${country} | Language = ${language}`);
+console.log(`Population in each half will be : ${population / 2}`);
+console.log(++population);
 
-let popFinland = 6000000
-let avgCountry = 33000000
+const popFinland = 6000000;
+const avgCountry = 33000000;
 
 if (popFinland > population) {
-    console.log(`Finland has a bigger population than ${country}.`)
+    console.log(`Finland has a bigger population than ${country}.`);
+} else if (popFinland < population) {
+    console.log(`${country} has a bigger population than Finland.`);
 } else {
-    console.log(`${country} has a bigger population than Finland.`)
+    console.log(`${country} has the same population as Finland.`);
 }
 
-if (population >= avgCountry){
-    console.log(`My country has a bigger population than an average country.`)
+if (population > avgCountry) {
+    console.log(`My country has a bigger population than an average country.`);
+} else if (population < avgCountry) {
+    console.log(`My country has a smaller population than an average country.`);
 } else {
-    console.log(`My country has a smaller population than an average country.`)
+    console.log(`My country has the same population as the average country.`);
 }
 
-console.log(description)
+console.log(description);
+console.log(`isIsland: ${typeof isIsland}, population: ${typeof population}, country: ${typeof country}, language: ${typeof language}`);
 
 /*
 Equality Operators: == vs. ===                                
@@ -49,19 +54,19 @@ Equality Operators: == vs. ===
 3. Use an else-if block to log 'More than 1 border' in case 'numNeighbours' is greater than 1                                                 
 4. Use an else block to log 'Noborders' (this block will be executed when 'numNeighbours' is 0 or any other value)                                                 
 5. Test the code with different values of 'numNeighbours', including 1 and 0                 
-6. Change ==to===, and test the code again, with the same values of 'numNeighbours'. Notice what happens when there is exactly 1 border! Why is this happening?                                                
+6. Change == to ===, and test the code again, with the same values of 'numNeighbours'. Notice what happens when there is exactly 1 border! Why is this happening?                                                
 7. Finally, convert 'numNeighbours' to a number, and watch what happens now when you input 1                                        
 8. Reflect on why we should use the === operator and type conversion in this situation
 */
 
-let numNeighbours = parseInt(prompt('How many neighbour countries does your country have? '));
+const numNeighbours = parseInt(prompt('How many neighbour countries does your country have? '));
 
 if (numNeighbours === 1){
-    console.log("Only 1 border!")
+    console.log("Only 1 border!");
 } else if (numNeighbours > 1){
-    console.log("More that 1 border!")
+    console.log("More that 1 border!");
 } else {
-    console.log("Noborders!")
+    console.log("Noborders!");
 }
 /// When using == JavaScript tries to convert both operands to a common type before comparing.
 /// When using === JavaScript checks if both the type and value of the value is the same when comparing.
@@ -73,35 +78,34 @@ Logical Operators
 1. Comment out the previous code so the prompt doesn't get in the way
 2. Let's say Sarah is looking for a new country to live in. She wants to live in a country that speaks English, has less than 50 million people and is not an island.        
 3. Write an if statement to help Sarah figure out if your country is right for her. You will need to write a condition that accounts for all of Sarah's criteria. Take your time with this, and check part of the solution if necessary.                        
-4. If yours is the right country, log as string like this: 'You should live in Portugal:)'. If
-   not, log 'Portugal does not meet your criteria :('                                        
+4. If yours is the right country, log as string like this: 'You should live in Portugal:)'. If not, log 'Portugal does not meet your criteria :('                                        
 5. Your country probably does not meet all the criteria. So go back and temporarily change some variables in order to make the condition true (unless you live in Canada :D)
 */
 
-let country = "Romania"
-let population = 19892812
-let isIsland = false
-let language = "Romanian"
+const country = "Romania";
+const population = 19892812;
+const isIsland = false;
+const language = "Romanian";
 
-if (population <= 50000000 && isIsland == false && language === "English" ) {
-    console.log(`You should live in ${country} :)`)
+if (population <= 50000000 && !isIsland && language === "English") {
+    console.log(`You should live in ${country} :)`);
 } else {
-    console.log(`${country} does not meet your criteria :(`)
-} 
+    console.log(`${country} does not meet your criteria :(`);
+}
 
 /*
 Strings and Template Literals                                        
 Recreate the description  variable from the last assignment (basic operators), this time using the template literal syntax   
 */
 
-let country = "Romania"
-let continent = "Europe"
-let population = 19892812
-let isIsland = false
-let language = null
-let description = `${country} is in ${continent}, and its ${population} million people speak ${language = "Romanian"}.`
+const country = "Romania";
+const continent = "Europe";
+const population = 19892812;
+const isIsland = false;
+let language;
+let description = `${country} is in ${continent}, and its ${population} million people speak ${language = "Romanian"}.`; 
 
-console.log(description)
+console.log(description);
 
 /*
 Type Conversion and Coercion                                
@@ -114,16 +118,16 @@ e) 5 + 6 + '4' + 9 - 4 - 2;
 2. Execute the operations to check if you were right
 */
 
-sum1 = '9' - '5'
-sum2 = '19' - '13' + '17'
-sum3 = '19' - '13' + 17
-sum4 = '123' < 57
-sum5 = 5 + 6 + '4' + 9 - 4 - 2
-console.log(sum1) //4
-console.log(sum2) //617
-console.log(sum3) //23
-console.log(sum4) //false
-console.log(sum5) //1143
+const sum1 = '9' - '5';
+const sum2 = '19' - '13' + '17';
+const sum3 = '19' - '13' + 17;
+const sum4 = '123' < 57;
+const sum5 = 5 + 6 + '4' + 9 - 4 - 2;
+console.log(sum1); //4
+console.log(sum2); //617
+console.log(sum3); //23
+console.log(sum4); //false
+console.log(sum5); //1143
 
 /*
 if / else Statements
@@ -131,15 +135,18 @@ if / else Statements
 2. After checking the result, change the population temporarily to 13 and then to 130. See the different results, and set the population back to original
 */
 
-let country = "Romania"
-let population = 19892812
-let avgPop = 33000000;
+const country = "Romania";
+const population = 19892812;
+const avgPop = 33000000;
 
-if (country.population >= avgPop) {
+if (population > avgPop) {
     console.log(`${country}'s population is ${population - avgPop} above the average.`);
-} else {
+} else if (population < avgPop) {
     console.log(`${country}'s population is ${avgPop - population} below the average.`);
+} else {
+    console.log(`${country}'s population is equal to the average population.`);
 }
+
 
 /*
 Use a switch statement to log the following string for the given 'language':
@@ -152,24 +159,25 @@ j) Arabic: '5th most spoken language'
 for all other simply log 'Great language too :D'     
 */
 
-language = "Romanian"
+const language = "Romanian";
 
 switch (language) {
-    case "Chinese"  && "Mandarin":
+    case "Chinese":
+    case "Mandarin":
         console.log('MOST number of native speakers!');
         break;
-   case "Spanish":
+    case "Spanish":
         console.log('2nd place in number of native speakers');
         break;
-   case "English":
+    case "English":
         console.log('3rd place');
         break;
-   case "Hindi":
-       console.log('Number 4');
-       break;
-   case "Arabic":
-       console.log('5th most spoken language');
-       break;
-   default:
+    case "Hindi":
+        console.log('Number 4');
+        break;
+    case "Arabic":
+        console.log('5th most spoken language');
+        break;
+    default:
         console.log('Great language too :D');
-   }
+}
