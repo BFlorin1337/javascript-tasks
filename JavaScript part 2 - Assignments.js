@@ -5,19 +5,13 @@ Call this function 3 times,with input data for 3 different countries.Store the r
 */
 
 function describeCountry(country, population, capitalCity){
-    const countryStats = {
-        country: country,
-        population: population,
-        capitalCity: capitalCity,
-    };
-
-    return console.log(countryStats.country + " has " + countryStats.population + " people and its capital city is " + countryStats.capitalCity);
+    return `${country} has ${population} people and its capital city is ${capitalCity}.`;
 }
 
-describeCountry("Romania", "19 million", "Bucharest");
-describeCountry("Ukraine", "38 million", "Kyiv");
-describeCountry("United States", "333 million", "Washington, D.C.");
-describeCountry("France", "68 million", "Paris");
+console.log(describeCountry("Romania", "19 million", "Bucharest"));
+console.log(describeCountry("Ukraine", "38 million", "Kyiv"));
+console.log(describeCountry("United States", "333 million", "Washington, D.C."));
+console.log(describeCountry("France", "68 million", "Paris"));
 
 /*
 Function Declarations vs. Expressions
@@ -28,69 +22,57 @@ Create a function expression which does the exact same thing, called 'percentage
 */
 
 function percentageOfWorld1(country, population){
-    let countryName = country;
-    const worldPopulation = 7900;
-
-    return console.log("The country of " + countryName + " makes up " + (population / worldPopulation) * 100 + "% of the world population");
-}
-function percentageOfWorld2(country, population){
-    let countryName = country;
-    const worldPopulation = 7900;
-
-    return console.log("The country of " + countryName + " makes up " + (population / worldPopulation) * 100 + "% of the world population");
+    return `The country of ${country} makes up ${(population / 7900) * 100} % of the world population`;
 }
 
-percentageOfWorld1("China", 1441);
-percentageOfWorld1("Romania", 19);
-percentageOfWorld1("Ukraine", 38);
-percentageOfWorld1("France", 68);
+console.log(percentageOfWorld1("China", 1441));
+console.log(percentageOfWorld1("Romania", 19));
+console.log(percentageOfWorld1("Ukraine", 38));
+console.log(percentageOfWorld1("France", 68));
 
-percentageOfWorld2("Germany", 84);
-percentageOfWorld2("India", 1417);
-percentageOfWorld2("Mexico", 127);
-percentageOfWorld2("Canada", 39);
+
+const percentageOfWorld2 = function (country, population) {
+    return `The country of ${country} makes up ${(population / 7900) * 100} % of the world population`;
+}
+
+console.log(percentageOfWorld2("Germany", 84));
+console.log(percentageOfWorld2("India", 1417));
+console.log(percentageOfWorld2("Mexico", 127));
+console.log(percentageOfWorld2("Canada", 39));
+
 
 /*
 Arrow Functions
 Recreate the last assignment, but this time create an arrow function called 'percentageOfWorld3'
 */
 
-const percentageOfWorld3 = (country, population) => {
-    let countryName = country;
-    const worldPopulation = 7900;
+const percentageOfWorld3 = (country, population) => `The country of ${country} makes up ${(population / 7900) * 100} % of the world population`;
 
-    return console.log("The country of " + countryName + " makes up " + (population / worldPopulation) * 100 + "% of the world population");
-}
+console.log(percentageOfWorld3("Japan", 125));
+console.log(percentageOfWorld3("South Korea", 52));
+console.log(percentageOfWorld3("Ethiopia", 123));
+console.log(percentageOfWorld3("Egypt", 111));
 
-percentageOfWorld3("Japan", 125);
-percentageOfWorld3("South Korea", 52);
-percentageOfWorld3("Ethiopia", 123);
-percentageOfWorld3("Egypt", 111);
 
 /*
 Functions Calling Other Functions
 Create a function called 'describePopulation'. Use the function type you like the most. This function takes in two arguments: 'country' and 'population', and returns a string like this: 'China has 1441 million people, which is about 18.2% of the world.'                                                
-To calculate the percentage,'describePopulation'callthe 'percentageOfWorld1' you created earlier                                                 
+To calculate the percentage,'describePopulation' call the 'percentageOfWorld1' you created earlier                                                 
 Call 'describePopulation' with data for 3 countries your choice
 */
 
+function percentageOfWorld1(country, population){
+    return `${country} has ${population} people, which is about ${(population/7900) * 100}% of the world.`;
+}
+
 function describePopulation(country, population){
-    const countryStats = {
-        country: country,
-        population: population,
-    };
-    const worldPopulation = 7900;
-    const percentageOfWorld = percentageOfWorld1(population, worldPopulation);
-
-    return console.log(countryStats.country + " has " + countryStats.population + " million people, which is about " + percentageOfWorld + "% of the world.");
-}
-function percentageOfWorld1(population, worldPopulation){
-    return (population / worldPopulation) * 100;
+    return percentageOfWorld1(country, population);
 }
 
-describePopulation("Romania", 19);
-describePopulation("Ukraine", 38);
-describePopulation("France", 68);
+console.log(describePopulation("Japan", 125));
+console.log(describePopulation("South Korea", 52));
+console.log(describePopulation("Ethiopia", 123));
+console.log(describePopulation("Egypt", 111));
 
 /*
 Introduction to Array                        
@@ -101,29 +83,19 @@ Create an array called 'percentages' containing the percentages of the world pop
 
 let populations = [1417, 127, 84, 39];
 
-if (populations.length === 4){
-    console.log("Array has 4 elements.")
-}
-else{
-    console.log("Array does not have 4 elements.")
-}
+const hasFourElements = populations.length === 4;
+console.log(hasFourElements);
 
 let percentages = [];
 
-function percentageOfWorld1(country, population){
-    let countryName = country;
-    const worldPopulation = 7900;
-    let popPercentage = (population / worldPopulation) * 100;
-
-    percentages.push(popPercentage);
-
-    return percentages;
+function percentageOfWorld1(population) {
+    return (population / 7900) * 100;
 }
 
-percentageOfWorld1("Germany", 84);
-percentageOfWorld1("India", 1417);
-percentageOfWorld1("Mexico", 127);
-percentageOfWorld1("Canada", 39);
+percentages.push(percentageOfWorld1(1417)); 
+percentages.push(percentageOfWorld1(127));  
+percentages.push(percentageOfWorld1(84));   
+percentages.push(percentageOfWorld1(39));   
 
 console.log(percentages);
 
@@ -138,17 +110,14 @@ Change the name of one of your neighbouring countries.To do that, find the index
 
 let neighbours = ["Moldova", "Hungary", "Bulgaria", "Serbia", "Ukraine"];
 
-neighbours.push("Utopia")
-neighbours.pop("Utopia")
+neighbours.push("Utopia");
+neighbours.pop("Utopia");
 
-if ("Germany" != neighbours){
+if (!neighbours.includes("Germany")){
     console.log("Probably not a central European country :D");
 }
-else{
-    console.log("It's a central European country :D");
-}
 
-neighbours[0] = "Republic of Moldova"
+neighbours[0] = "Republic of Moldova";
 
 /*
 Iteration: The for Loop
@@ -166,29 +135,19 @@ Use a for loop to compute an array called 'percentages2 'containing the percenta
 Confirm that 'percentages2' contains exactly the same values as the 'percentages' array that we created manually in the previous assignment, and reflect on how much better this solution is.  
 */
 
-let populations = [1417, 127, 84, 39];
-const worldPopulation = 7900;
-let percentage = [];
-let percentage2 = [];
+const populations = [1417, 127, 84, 39];
+const percentage = [17.93670886075949, 1.6075949367088609, 1.0632911392405064, 0.4936708860759494];
+const percentage2 = [];
 
-function percentageOfWorld1(country, population){
-    let countryName = country;
-    let popPercentage = (population / worldPopulation) * 100;
-
-    percentage.push(popPercentage);
+function percentageOfWorld1(population){
+    return (population / 7900) * 100;
 }
-
-percentageOfWorld1("India", 1417);
-percentageOfWorld1("Mexico", 127);
-percentageOfWorld1("Germany", 84);
-percentageOfWorld1("Canada", 39);
 
 for (let i = 0; i < populations.length; i++) {
-    let percentage = (populations[i] / worldPopulation) * 100;
-    percentage2.push(percentage);
+    percentage2.push(percentageOfWorld1(populations[i]));
 }
 
-if (percentage.length == percentage2.length) {
+if (percentage.length === percentage2.length && percentage.join('') === percentage2.join('')) {
     console.log("Contain the same values.");
 } else {
     console.log("The values are different.");
@@ -241,7 +200,7 @@ let myCountry = {
     neighbours: ["Moldova", "Hungary", "Bulgaria", "Serbia", "Ukraine"]
 };
 
-console.log(myCountry)
+console.log(myCountry);
 
 /*
 Dot vs. Bracket Notation                                
