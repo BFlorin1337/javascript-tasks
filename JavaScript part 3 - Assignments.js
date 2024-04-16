@@ -52,6 +52,20 @@ if (timePockets < timeHead) {
     console.log("Both property lookups have similar speed");
 }
 
+const iterations = 1000000;
+
+console.time('pockets.glasses');
+for (let i = 0; i < iterations; i++) {
+let value = pockets.glasses; // Access via prototype chain
+}
+console.timeEnd('pockets.glasses');
+
+console.time('head.glasses');
+for (let i = 0; i < iterations; i++) {
+let value = head.glasses; // Direct property access
+}
+console.timeEnd('head.glasses');
+
 /*
 We have rabbit inheriting from animal.
 If we call rabbit.eat(), which object receives the full property: animal or rabbit?
@@ -149,15 +163,14 @@ Write a function count(obj) that returns the number of properties in the object:
 */
 
 let user = {
-    name: 'John',
-    age: 30
-  };
+  name: 'John',
+  age: 30
+};
 
-function count(obj){
-   return this.obj = Object.keys(obj).length
-
+function count(obj) {
+return Object.keys(obj).length;
 }
-  console.log(count(user));
+console.log(count(user));
 
 /*
 
